@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="icon" href="assets/images/icon.webp" type="image/webp" />
+  <title>PLAXER</title>
+  <style>
+    #header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<!-- cabecera -->
+
+<body class="bg-black">
+  <section id="header" class="container-fluid seccionH">
+    <header class="container d-flex align-items-center">
+      <a class="col-6" href="index.html">
+        <img src="assets/images/logo-light.webp" alt="" height="40px" />
+      </a>
+
+      <button class="d-md-none navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+        <img src="assets/images/menu.webp" alt="Menu" class="col-1 img-fluid" />
+      </button>
+      <!-- menu pantallas grandes -->
+      <div class="col-6 d-none d-md-flex justify-content-around">
+        <a href="index.html">Home</a>
+        <a href="sobreNosotros.html">About Us</a>
+        <a href="blog.html">Blog</a>
+        <a href="galeria.html">Gallery</a>
+        <a href="tienda.html">Shop</a>
+        <a href="contacto.html">Contacts</a>
+      </div>
+      <!-- menu pantallas pequenias -->
+      <div class="collapse navbar-collapse px-4" id="navbarNav">
+        <div class="navbar-nav">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="sobreNosotros.html">About Us</a>
+          <a class="nav-link" href="blog.html">Blog</a>
+          <a class="nav-link" href="galeria.html">Gallery</a>
+          <a class="nav-link" href="tienda.html">Shop</a>
+          <a class="nav-link" href="contacto.html">Contacts</a>
+        </div>
+      </div>
+    </header>
+  </section>
+  <!-- cartel shop -->
+  <section class="container-fluid bg-dark py-4">
+    <div class="container">
+      <h1>Shop</h1>
+    </div>
+  </section>
+  <!-- seccion de tienda -->
+  <section class="container-fluid d-flex align-items-start justify-content-center py-4">
+    <div class="container row align-items-start justify-content-center">
+      <div class="col-md-8 py-2">
+        <h6>SHOWING ALL 12 RESULTS</h6>
+        <!-- seccion de prductos -->
+        <div id="productos" class="row my-4">
+          
+        </div>
+      </div>
+      <!-- barra lateral -->
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <select id="filtros" class="form-select bg-dark border border-gray-300 text-white my-3" name="opciones"
+          style="max-width: 200px;">
+          <option value="1" selected>Default Sorting</option>
+          <option value="2">Precio</option>
+          <option value="3">Precio descendente</option>
+          <option value="4">Criticas</option>
+          <option value="5">Criticas descendente</option>
+          <option value="6">Oferta</option>
+          <option value="7">Oferta descendente</option>
+          <option value="8">Mas nuevos</option>
+          <option value="9">Mas antiguos</option>
+        </select>
+        <h4>About me</h4>
+        <img src="assets/images/juego1.webp" style="width: 100%;" alt="">
+        <p>Through our best techniques and bespoke growth plans we assess digital problems and put in place strategies
+          that lead to commercial success.</p>
+        <p>Follow us</p>
+        <input class="form-control bg-dark border border-gray-300 text-white" type="text">
+        <h4 class="m-4">CATEGORIES</h4>
+        <!-- categorias -->
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">Dota 2</a></p>
+        </div>
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">Fortnite</a></p>
+        </div>
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">CS GO</a></p>
+        </div>
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">PUBG</a></p>
+        </div>
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">Dota 2</a></p>
+        </div>
+        <div class="container-fluid border-bottom my-3">
+          <p>><a class="mx-3" href="">Streams</a></p>
+        </div>
+        <!-- categoria -->
+        <h4 class="m-4">GALLERY</h4>
+        <section>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4"><img class="img-fluid" src="assets/images/consola.webp" alt=""></div>
+              <div class="col-4"><img class="img-fluid" src="assets/images/camiseta.webp" alt=""></div>
+              <div class="col-4"><img class="img-fluid" src="assets/images/nintendo.webp" alt=""></div>
+            </div>
+          </div>
+          <div class="container-fluid my-4">
+            <div class="row">
+              <div class="col-4"><img class="img-fluid" src="assets/images/consola.webp" alt=""></div>
+              <div class="col-4"><img class="img-fluid" src="assets/images/camiseta.webp" alt=""></div>
+              <div class="col-4"><img class="img-fluid" src="assets/images/nintendo.webp" alt=""></div>
+            </div>
+          </div>
+        </section>
+        <!--tags-->
+        <h4 class="m-4">Tags</h4>
+        <div class="container-fluid tags">
+          <div class="d-flex flex-wrap">
+            <p class="p-4 my-2 me-2">dota 2</p>
+            <p class="p-4 my-2 me-2">fortnite</p>
+            <p class="p-4 my-2 me-2">cs go</p>
+            <p class="p-4 my-2 me-2">pubg</p>
+            <p class="p-4 my-2 me-2">streams</p>
+          </div>
+        </div>
+        <!-- productos principales -->
+        <h4 class="m-4">Related Products</h4>
+        <div class="d-flex align-items-center">
+          <img class="col-2 img-fluid" src="assets/images/camiseta.webp" alt="T-shirt">
+          <div class="col-10 p-4">
+            <h5 class="mb-1">T-shirt</h5>
+            <p class="mb-0">$7</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <img class="col-2 img-fluid" src="assets/images/consola.webp" alt="T-shirt">
+          <div class="col-10 p-4">
+            <h5 class="mb-1">Console</h5>
+            <p class="mb-0">$7</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <img class="col-2 img-fluid" src="assets/images/nintendo.webp" alt="T-shirt">
+          <div class="col-10 p-4">
+            <h5 class="mb-1">Nintendo Controllers</h5>
+            <p class="mb-0">$7</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- pie de pagina -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="assets/images/logo-light.webp" class="w-50 py-4" alt="">
+          <form>
+            <div class="form-group"> <input type="email" class="form-control" placeholder="Enter your email"> </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p>The world without photography will be meaningless to us.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Address</h5>
+          <p>Baker Street 223b London, CA 70413</p>
+          <p>Open: 9:30 AM 5:30PM</p>
+          <p>Phone: +1 (800) 456 37 11</p>
+          <p>Email: support@promo-theme.com</p>
+          <div class="social-icons"> <a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i
+                class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Recent Posts</h5>
+          <ul class="list-unstyled">
+            <li>Kills You Slowly <small>November 8, 2019</small></li>
+            <li>Clout <small>April 22, 2019</small></li>
+            <li>Jerome <small>April 22, 2019</small></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Recent Comments</h5>
+          <ul class="list-unstyled">
+            <li>Elena Cobsky - <a href="#">Driving Engagement Online</a></li>
+            <li>John Michel - <a href="#">Designing for the Web in 2019</a></li>
+            <li>Anton Stockman - <a href="#">Streamlining the Path to Conversion</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <p>&copy; 2019, SOMO Theme by Promo Theme Team | <a href="#">Privacy Policy</a> | <a href="#">Sitemap</a></p>
+        </div>
+        <div class="col-md-6 back-to-top"> <a href="#">BACK TO TOP</a> </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

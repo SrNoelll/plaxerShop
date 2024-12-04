@@ -1,0 +1,453 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova/proximanova_regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova/proximanova_bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova/proximanova_black.otf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+html,
+body {
+  margin: 0;
+  font-family: 'Proxima Nova', sans-serif;
+  background-color: black;
+  margin: 0;
+}
+
+header {
+  font-family: 'Proxima Nova', sans-serif;
+  height: 70px;
+  text-decoration: none;
+  color: white;
+  z-index: 55;
+}
+
+.seccionH {
+  position: fixed;
+  z-index: 55;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+  padding: 10px;
+}
+
+header a:hover {
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white;
+  color: white;
+}
+
+header.scrolled {
+  background-color: #333;
+}
+
+#navbarNav {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  z-index: 1000;
+  width: 100%;
+}
+
+.navbar-nav {
+  flex-direction: column;
+}
+
+.nav-link {
+  color: #fff;
+  padding: 10px 20px;
+}
+
+
+.hero {
+  font-family: 'Proxima Nova', sans-serif;
+  height: 100vh;
+  background-image: url("../../assets/images/hero1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.hero2 {
+  background-image: url("../../assets/images/hero2.webp");
+}
+
+.hero3 {
+  background-image: url("../../assets/images/hero3.webp");
+}
+
+html {
+  overflow-y: scroll;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+.cuadradin {
+  background-image: url("../images/cuadradin.webp");
+  background-size: 200px 110px;
+  background-repeat: no-repeat;
+}
+
+#botonP {
+  position: relative;
+  color: #fff;
+  background: linear-gradient(135deg, #a1052c, #0750d0);
+  width: fit-content;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.5s;
+}
+
+#botonP::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #790422, #06388f);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: -1;
+}
+
+#botonP:hover::before {
+  opacity: 1;
+}
+
+#botonP {
+  position: relative;
+  z-index: 1;
+}
+
+.celda {
+  position: relative;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 350px;
+  background-color: #090909;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.celda::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #a1052c, #0750d0);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 0;
+}
+
+.celda:hover::before {
+  opacity: 1;
+}
+
+.celda * {
+  position: relative;
+  z-index: 1;
+}
+
+video {
+  width: 100%;
+}
+
+#botonLeer {
+  position: relative;
+  color: #fff;
+  background: linear-gradient(105deg, transparent 0% 10%, #a1052c 12%, #0750d0 90%, transparent 92%);
+  background-size: 40% 6px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+#botonLeer:hover {
+  background-size: 100% 100%;
+}
+
+
+.card-img-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  font-size: 1.2rem;
+}
+
+.fondoQuieto {
+  background: url("../images/hero2.webp");
+  background-attachment: fixed;
+  padding: 70px;
+}
+
+.fondoQuieto h5 {
+  margin-left: 25px;
+}
+
+#header {
+  transition: background-color 0.5s ease, padding 0.5s ease;
+}
+
+.header-scrolled {
+  background-color: black !important;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer .social-icons a {
+  margin-right: 10px;
+}
+
+.footer .back-to-top {
+  text-align: right;
+}
+
+.footer input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.footer button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer button:hover {
+  background-color: #0056b3;
+}
+
+* {
+  font-family: 'Proxima Nova', sans-serif;
+  color: white;
+}
+.partido::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #a1052c, #0750d0);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 0;
+}
+
+.partido:hover::before {
+  opacity: 1;
+}
+
+.partido * {
+  position: relative;
+  z-index: 1;
+}
+
+.imagenGal img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.imagenGal img:hover {
+  transform: scale(1.05);
+}
+
+.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+#modalImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+.imagenGal img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.imagenGal {
+  position: relative;
+  overflow: hidden;
+}
+
+.imagenGal img {
+  width: 100%;
+  height: 400px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.imagenGal:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  width: 100%;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imagenGal:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.overlay p {
+  margin: 5px 0 0;
+  font-size: 12px;
+}
+
+.blog img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.acordeon button:not(collapsed){
+  color: #fff;
+  background: linear-gradient(105deg, transparent 0% 10%, #a1052c 12%, #0750d0 90%, transparent 92%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  transition: all 0.4s;
+}
+
+.acordeon button.collapsed{
+  background-size: 0%;
+  border: none;
+}
+
+.acordeon button:hover{
+  color: #0750d0;
+}
+
+.tags p{
+  background-color: #212529;
+  }
+.tags p:hover{
+background-color: #0750d0;
+}
+
+.momento:hover{
+  background-color: #a1052c;
+}
+.momento{
+  background-color: #0750d0;
+  transition: all 500ms;
+}
+
+.bg-back{
+  color: #fff;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+body, p, .texto-general {
+  font-size: 16px;
+  font-weight: 400;
+}
