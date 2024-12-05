@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /////////////////////////////////  Tienda  //////////////////////////////////////////////
 const selectShop = document.querySelector("#tiendas");
 const filtroSelec = document.querySelector("#filtros");
+const categoriaSelec = document.querySelector("#categoria"); // Nuevo select para categorías
 const productos = document.querySelector("#productos");
 let baseURL = "https://www.cheapshark.com/api/1.0/deals?pageSize=16&pageNumber=0";
 
@@ -79,7 +80,7 @@ function selectTiendas() {
     });
 }
 
-function tiendaPrede(params = []) {
+function tiendaPrede(params = [], category = "all") {
   const url = new URL(baseURL);
   params.forEach(param => {
     const [key, value] = param.split("=");
@@ -91,8 +92,62 @@ function tiendaPrede(params = []) {
   fetch(url)
     .then(res => res.json())
     .then(data => {
+      let filteredProducts = data;
+      const categoryMap = {
+        "Action": [
+            "shooter", "zombie", "open-world", "assassin", "auto", "combat", "warfare", 
+            "guns", "stealth", "cyberpunk", "melee", "survival", "heist", "spider", 
+            "bounty-hunter", "rage", "sci-fi", "race", "tank", "battle-royale", "defense",
+            "loot", "missions", "resistance", "heroes", "dungeons", "vigilante", "hack",
+            "robots", "adventure", "multiplayer", "clans", "boss", "puzzle", "hacker", 
+            "zombies", "infiltration", "trap", "speed", "teamwork", "expansion", "terrain"
+        ],
+        "Adventure": [
+            "puzzle", "treasure", "island", "mystery", "time-travel", "exploration", 
+            "ancient", "rescue", "story-driven", "paradise", "quests", "hidden", "eco",
+            "darkness", "enchanted", "heart", "lost", "mansion", "trap", "runes", 
+            "storm", "clue", "cave", "tower", "danger", "forest", "ghost", "waterfall", 
+            "ocean", "fishing", "theft", "courage", "escape", "pursuit", "vengeance", 
+            "discovery", "secrets", "illusion", "riddle", "mystic", "temple", "ghosts"
+        ],
+        "RPG": [
+            "dragon", "quest", "sword", "magic", "summon", "kingdom", "dark", "elf", 
+            "dungeon", "battle", "heroes", "steampunk", "artifact", "town", "fortress", 
+            "gear", "guild", "combat", "elixir", "spell", "warrior", "priest", "bosses", 
+            "ancestor", "honor", "race", "legend", "summon", "loot", "realm", "alliance", 
+            "champion", "merchant", "potion", "tactics", "relics", "secret", "ranger", 
+            "sorcerer", "warlock", "thief", "village", "faction", "siege", "pillage", 
+            "destiny", "cursed", "cult", "arcane", "hunt", "huntress", "mentor", "trap"
+        ],
+        "Strategy and Simulation": [
+            "economy", "empire", "war", "city", "defend", "resource", "manage", "alliance",
+            "fortress", "battlefield", "tech", "expansion", "diplomacy", "invasion", 
+            "siege", "naval", "territory", "mines", "colonize", "region", "build", "army", 
+            "plan", "tower", "conquer", "fort", "construction", "infrastructure", "pillage", 
+            "trade", "stocks", "land", "colonial", "strategy", "tactic", "builder", 
+            "laws", "simulation", "rank", "overcome", "supply", "scout", "recruit", 
+            "submarine", "militia", "peace", "gameplay", "leader", "raid", "incursion", 
+            "reinforcements", "supply-line", "perimeter", "network", "forest", "trade-off"
+        ]
+    };
+    
+
+      if (category !== "all") {
+        const keywords = categoryMap[category] || [];
+        filteredProducts = data.filter(product => 
+          keywords.some(keyword =>
+            product.title.toLowerCase().includes(keyword)
+          )
+        );
+      }
+
       productos.innerHTML = "";
-      data.forEach(element => {
+      if (filteredProducts.length === 0) {
+        productos.innerHTML = "<p>No games found for the selected category.</p>";
+        return;
+      }
+
+      filteredProducts.forEach(element => {
         productos.innerHTML += `
           <div class="col-6 row p-4">
             <div class="col-12 ratio ratio-1x1">
@@ -100,12 +155,12 @@ function tiendaPrede(params = []) {
             </div>
             <h3>${element.title}</h3>
             <span class="col-6 text-start text-danger text-decoration-line-through">
-              ${element.normalPrice}
+              $${element.normalPrice}
             </span>
-            <span class="col-6 text-end">${element.salePrice}</span>
-            <p>Porcentaje ahorro</p>
+            <span class="col-6 text-end">$${element.salePrice}</span>
+            <p class="text-primary">-${parseFloat(element.savings).toFixed(2)}%</p>
             <p>Metacritic: ${element.metacriticScore}</p>
-            <a href="${element.thumb}" class="btn btn-primary">Shop Now</a>
+            <a href="${element.metacriticLink}" class="btn btn-primary">Shop Now</a>
           </div>`;
       });
     })
@@ -115,6 +170,7 @@ function tiendaPrede(params = []) {
 function aplicarFiltros() {
   const storeID = selectShop.value;
   const filterValue = filtroSelec.value;
+  const category = categoriaSelec.value;
   const filters = [];
 
   if (storeID) {
@@ -147,10 +203,11 @@ function aplicarFiltros() {
       break;
   }
 
-  tiendaPrede(filters);
+  tiendaPrede(filters, category);
 }
 
 selectShop.addEventListener("change", aplicarFiltros);
 filtroSelec.addEventListener("change", aplicarFiltros);
+categoriaSelec.addEventListener("change", aplicarFiltros); // Nuevo evento
 
 selectTiendas();
