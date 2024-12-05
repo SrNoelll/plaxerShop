@@ -61,61 +61,96 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 /////////////////////////////////  Tienda  //////////////////////////////////////////////
-function tiendaPrede(pageNum,parametros) {
-const productos = document.querySelector("#productos")
-let url = 'https://www.cheapshark.com/api/1.0/deals?pageSize=16&pageNumber='
-url+=pageNum
-parametros.forEach(element => {
-  url+='&'+element+'&'
-});
-console.log(url)
-fetch(url)
-.then(res => res.json())
-.then(data => {
-  let datos = data
-  console.log(datos)
-  productos.innerHTML=''
-  datos.forEach(element => {
-    productos.innerHTML += `<div class="col-6" style="height: 300px;"><img class="img-fluid" style="width: 100%; height: 100%;" src="${element.thumb}" alt=""></div>`
-  });
-  
-})
+const selectShop = document.querySelector("#tiendas");
+const filtroSelec = document.querySelector("#filtros");
+const productos = document.querySelector("#productos");
+let baseURL = "https://www.cheapshark.com/api/1.0/deals?pageSize=16&pageNumber=0";
+
+function selectTiendas() {
+  fetch("https://www.cheapshark.com/api/1.0/stores")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(store => {
+        if (store.isActive === 1) {
+          selectShop.innerHTML += `<option value="${store.storeID}">${store.storeName}</option>`;
+        }
+      });
+      aplicarFiltros();
+    });
 }
-const filtroSelec = document.querySelector('#filtros')
-tiendaPrede(1,[]);
-filtroSelec.addEventListener('change', (event) => {
-  switch (Number(event.target.value)) {
-    case 1:
-      tiendaPrede(1,[]);
-    break;
-    case 2:
-      tiendaPrede(1,["sortBy=Price"]);
-    break;
-    case 3:
-      tiendaPrede(1,["sortBy=Price","desc=1"]);
-    break;
-    case 4:
-      tiendaPrede(1,["sortBy=Metacritic"]);
-    break;
-    case 5:
-      tiendaPrede(1,["sortBy=Metacritic","desc=1"]);
-    break;
-    case 6:
-      tiendaPrede(1,["sortBy=Savings"]);
-    break;
-    case 7:
-      tiendaPrede(1,["sortBy=Savings","desc=1"]);
-    break;
-    case 8:
-      tiendaPrede(1,["sortBy=Release"]);
-    break;
-    case 9:
-      tiendaPrede(1,["sortBy=Release","desc=1"]);
-    break;
+
+function tiendaPrede(params = []) {
+  const url = new URL(baseURL);
+  params.forEach(param => {
+    const [key, value] = param.split("=");
+    if (key) url.searchParams.set(key, value || "");
+  });
+
+  console.log("URL generada:", url.toString());
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      productos.innerHTML = "";
+      data.forEach(element => {
+        productos.innerHTML += `
+          <div class="col-6 row p-4">
+            <div class="col-12 ratio ratio-1x1">
+              <img class="img-fluid" src="${element.thumb}" alt="Game image">
+            </div>
+            <h3>${element.title}</h3>
+            <span class="col-6 text-start text-danger text-decoration-line-through">
+              ${element.normalPrice}
+            </span>
+            <span class="col-6 text-end">${element.salePrice}</span>
+            <p>Porcentaje ahorro</p>
+            <p>Metacritic: ${element.metacriticScore}</p>
+            <a href="${element.thumb}" class="btn btn-primary">Shop Now</a>
+          </div>`;
+      });
+    })
+    .catch(err => console.error("Error al cargar los productos:", err));
+}
+
+function aplicarFiltros() {
+  const storeID = selectShop.value;
+  const filterValue = filtroSelec.value;
+  const filters = [];
+
+  if (storeID) {
+    filters.push(`storeID=${storeID}`);
   }
-});
+  switch (Number(filterValue)) {
+    case 2:
+      filters.push("sortBy=Price");
+      break;
+    case 3:
+      filters.push("sortBy=Price", "desc=1");
+      break;
+    case 4:
+      filters.push("sortBy=Metacritic");
+      break;
+    case 5:
+      filters.push("sortBy=Metacritic", "desc=1");
+      break;
+    case 6:
+      filters.push("sortBy=Savings");
+      break;
+    case 7:
+      filters.push("sortBy=Savings", "desc=1");
+      break;
+    case 8:
+      filters.push("sortBy=Release");
+      break;
+    case 9:
+      filters.push("sortBy=Release", "desc=1");
+      break;
+  }
 
+  tiendaPrede(filters);
+}
 
-//filtrar por tienda
-//steam
-//tiendaPrede(1,["storeID=1"]);
+selectShop.addEventListener("change", aplicarFiltros);
+filtroSelec.addEventListener("change", aplicarFiltros);
+
+selectTiendas();
